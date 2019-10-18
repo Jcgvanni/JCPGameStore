@@ -1,15 +1,8 @@
 package com.example.jcpgamestore;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.app.SearchManager;
-import android.content.Context;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     List<Integer> gamePic = new ArrayList<>();
     List<Integer> gameMusic = new ArrayList<>();
     MediaPlayer currentSong = new MediaPlayer();
+    private SearchView mSearchView;
 
     private void addItems(){
         gameList.add("Avengers");
@@ -56,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //Basic Action Bar Set
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+
+        //Basic Action Bar Set for the Search Bar
+        //Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
+
         addItems();
         final ListView listViewGames = findViewById(R.id.listGames );
         listViewGames.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, gameList));
         final MyCustomAdapter myAdapter = new MyCustomAdapter( this,gameList, gamePic );
-
         listViewGames.setAdapter( myAdapter );
-
         listViewGames.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,19 +89,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the options menu from XML
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
-
-        // Get the SearchView and set the searchable configuration
-        SearchManager searchManager = (SearchManager) getSystemService( Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-        // Assumes current activity is the searchable activity
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
-
-        return true;
-    }
 }
