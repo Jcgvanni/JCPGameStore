@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         gameMusic.add(R.raw.gow);
         gameList.add("Street Fighter V");
         gamePic.add(R.drawable.streetfighter5);
-        gameMusic.add(R.raw.sf5);
+        gameMusic.add(R.raw.sf);
         gameList.add("UFC 3");
         gamePic.add(R.drawable.ufc3);
-        gameMusic.add(R.raw.sf5);
+        gameMusic.add(R.raw.ufc);
     }
 
     @Override
