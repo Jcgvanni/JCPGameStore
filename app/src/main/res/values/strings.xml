@@ -12,4 +12,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="txtTitleForm">Sign Up Form</string>
+    <string name="editFName">First Name</string>
+    <string name="editLName">Last Name</string>
+    <string name="btnTxtSignUp">Sign Up</string>
+    <string name="EditTxtMember">Already a member? Sign In</string>
+    <string name="txtsignup">Not a member? Sign Up</string>
 </resources>

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MyCustomAdapter extends BaseAdapter {
     List<String> myList = new ArrayList<>();
@@ -65,14 +66,14 @@ public class MyCustomAdapter extends BaseAdapter {
 
 
         Drawable img = ContextCompat.getDrawable( parent.getContext(), myPics.get( position ) );
-        img.setBounds(0,0,100,100);
+        Objects.requireNonNull( img ).setBounds(0,0,100,100);
 
         Drawable imgCart = ContextCompat.getDrawable( parent.getContext(), R.drawable.addcart );
         //Drawable imgCart = ContextCompat.getDrawable( parent.getContext(), R.drawable.);
         //if (currentPlayingIdx == position){
            // imgAddCart = ContextCompat.getDrawable(parent.getContext(), R.drawable.stop);
         //}
-        imgCart.setBounds(0,0,100,100);
+        Objects.requireNonNull( imgCart ).setBounds(0,0,100,100);
 
         txtViewItem.setCompoundDrawables(img, null, imgCart, null);
         txtViewItem.setCompoundDrawablePadding(32);

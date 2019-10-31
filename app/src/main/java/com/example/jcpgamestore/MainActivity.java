@@ -1,6 +1,7 @@
 package com.example.jcpgamestore;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -105,20 +106,23 @@ public class MainActivity extends AppCompatActivity {
     //Search widget in Menu Bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate( R.menu.menu_search, menu );
+
         MenuItem item = menu.findItem( R.id.menuSearch );
         SearchView searchView = (SearchView)item.getActionView();
-
         searchView.setOnQueryTextListener( new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                return false;
+
+                return true;
             }
         } );
 
