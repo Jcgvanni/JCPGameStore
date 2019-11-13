@@ -10,6 +10,7 @@
         android:id="@+id/imageViewSplash"
         android:layout_width="350dp"
         android:layout_height="274dp"
+        android:contentDescription="@string/StoreTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

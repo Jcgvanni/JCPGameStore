@@ -18,4 +18,7 @@
     <string name="btnTxtSignUp">Sign Up</string>
     <string name="EditTxtMember">Already a member? Sign In</string>
     <string name="txtsignup">Not a member? Sign Up</string>
+    <string name="imgGameDesc">Game Image</string>
+    <string name="titleGameDesc">Game Title</string>
+    <string name="txtGameDesc">Game Description</string>
 </resources>
