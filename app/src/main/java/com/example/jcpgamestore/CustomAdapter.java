@@ -1,9 +1,13 @@
 package com.example.jcpgamestore;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,13 +34,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
         TextView txtGameName = holder.txtGameName;
-        TextView txtGameRelease = holder.txtGameRelease;
+        TextView txtGamePrice = holder.txtGamePrice;
         ImageView imgGames = holder.imgGame;
+        Button btnCart = holder.btnCart;
+        Spinner qtySpinner = holder.qtySpinner;
+
+
 
 
         txtGameName.setText(dataSet.get(position).getGameName());
-        txtGameRelease.setText(dataSet.get(position).getGameRelease());
+        txtGamePrice.setText(dataSet.get(position).getGamePrice());
         imgGames.setImageResource(dataSet.get(position).getImage());
+
 
     }
 
@@ -47,15 +56,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView txtGameName;
-        TextView txtGameRelease;
+        TextView txtGamePrice;
         ImageView imgGame;
+        Button btnCart;
+        Spinner qtySpinner;
 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             this.txtGameName = itemView.findViewById(R.id.txtGameName);
-            this.txtGameRelease = itemView.findViewById(R.id.txtGameRelease);
+            this.txtGamePrice = itemView.findViewById(R.id.txtGamePrice);
             this.imgGame = itemView.findViewById(R.id.imgGame);
+            this.btnCart = itemView.findViewById(R.id.btnCart);
+            this.qtySpinner = itemView.findViewById(R.id.qtySpinner);
         }
     }
 }

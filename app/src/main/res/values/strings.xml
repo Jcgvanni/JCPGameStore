@@ -21,4 +21,15 @@
     <string name="imgGameDesc">Game Image</string>
     <string name="titleGameDesc">Game Title</string>
     <string name="txtGameDesc">Game Description</string>
-</resources>
+    <string name="gamePrice">Game Price</string>
+    <string name="btnCart">Add to Cart</string>
+
+    <string-array name="numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    </resources>

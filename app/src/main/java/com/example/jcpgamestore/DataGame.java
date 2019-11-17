@@ -1,13 +1,14 @@
 package com.example.jcpgamestore;
 
 public class DataGame {
-    String gameName, gameRelease;
+    String gameName;
+    String gamePrice;
     int image;
     int music;
 
-    public DataGame(String gameName, String gameRelease, int image, int music) {
+    public DataGame(String gameName, String gamePrice, int image, int music) {
         this.gameName = gameName;
-        this.gameRelease = gameRelease;
+        this.gamePrice = gamePrice;
         this.image = image;
         this.music = music;
     }
@@ -20,12 +21,12 @@ public class DataGame {
         this.gameName = gameName;
     }
 
-    public String getGameRelease() {
-        return gameRelease;
+    public String getGamePrice() {
+        return gamePrice;
     }
 
-    public void setGameRelease(String gameDesc) {
-        this.gameRelease = gameDesc;
+    public void setGamePrice(String gamePrice) {
+        this.gamePrice = gamePrice;
     }
 
     public int getImage() {

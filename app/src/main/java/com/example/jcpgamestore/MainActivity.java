@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
             myRecycle.setLayoutManager(layoutManager);
 
             data = new ArrayList<>();
-            for (int i = 0; i < myGames.gameName.length; i++){
+            for(int i = 0; i < myGames.gameName.length; i++){
                 data.add(new DataGame(
                         myGames.gameName[i],
-                        myGames.gameRelease[i],
+                        myGames.gamePrice[i],
                         myGames.gameImages[i],
                         myGames.gameMusics[i]));
             }
