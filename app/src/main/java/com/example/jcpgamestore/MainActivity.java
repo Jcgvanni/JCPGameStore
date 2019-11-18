@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     static View.OnClickListener myOnClickListener;
     private RecyclerView.LayoutManager layoutManager;
     private static ArrayList<DataGame> data;
-    private static RecyclerView.Adapter adapter;
+    private CustomAdapter adapter;
 
 
         @Override
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                         myGames.gamePrice[i],
                         myGames.gameImages[i],
                         myGames.gameMusics[i]));
+
             }
             adapter = new CustomAdapter(data);
             myRecycle.setAdapter(adapter);
@@ -57,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onClick(View v){
-
 
             }
         }
@@ -80,19 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                return true;
+                adapter.getFilter().filter(newText);
+                return false;
             }
         } );
 
         return super.onCreateOptionsMenu( menu );
     }
-
-
-
-
-
-    }
+}
 
 
 

@@ -18,12 +18,10 @@
         <activity
             android:name=".SignupFormActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
-
         </activity>
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
-
         </activity>
 
         <activity android:name=".MainActivity" >
