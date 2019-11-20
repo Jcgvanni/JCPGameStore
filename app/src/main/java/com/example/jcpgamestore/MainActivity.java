@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 data.add(new DataGame(
                         myGames.gameName[i],
                         myGames.gamePrice[i],
-                        myGames.gameImages[i],
-                        myGames.gameMusics[i]));
+                        myGames.gameImages[i]));
 
             }
             adapter = new CustomAdapter(data);

@@ -4,13 +4,11 @@ public class DataGame {
     String gameName;
     String gamePrice;
     int image;
-    int music;
 
-    public DataGame(String gameName, String gamePrice, int image, int music) {
+    public DataGame(String gameName, String gamePrice, int image) {
         this.gameName = gameName;
         this.gamePrice = gamePrice;
         this.image = image;
-        this.music = music;
     }
 
     public String getGameName() {
@@ -35,13 +33,5 @@ public class DataGame {
 
     public void setImage(int image) {
         this.image = image;
-    }
-
-    public int getMusic() {
-        return music;
-    }
-
-    public void setMusic(int music) {
-        this.music = music;
     }
 }
