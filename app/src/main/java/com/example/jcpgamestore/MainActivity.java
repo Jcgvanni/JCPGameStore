@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,12 +18,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseHelper myDb;
     private SearchView mSearchView;
     private static RecyclerView myRecycle;
     static View.OnClickListener myOnClickListener;
@@ -28,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private static ArrayList<DataGame> data;
     private CustomAdapter adapter;
 
-
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
@@ -49,18 +52,18 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter = new CustomAdapter(data);
             myRecycle.setAdapter(adapter);
+            myDb = new DatabaseHelper(this);
+
 
         }
-
-        private class MyOnClickListener implements View.OnClickListener {
-            public MyOnClickListener(Context context    ) {
-            }
-            @Override
-            public void onClick(View v){
-
-            }
+    private class MyOnClickListener implements View.OnClickListener {
+        public MyOnClickListener(Context context    ) {
         }
+        @Override
+        public void onClick(View v){
 
+        }
+    }
     //Search widget in Menu Bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -86,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu( menu );
     }
+
+
 }
 
 
