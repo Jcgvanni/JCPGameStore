@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             myOnClickListener = new MyOnClickListener(this);
             layoutManager = new LinearLayoutManager(this);
             myRecycle.setLayoutManager(layoutManager);
+            
 
             data = new ArrayList<>();
             for(int i = 0; i < myGames.gameName.length; i++){
@@ -53,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
             adapter = new CustomAdapter(data);
             myRecycle.setAdapter(adapter);
             myDb = new DatabaseHelper(this);
+            myDb.addGameData("Avengers", 79.99);
+            myDb.addGameData("Call of Duty: Modern Warfare", 79.99);
+            myDb.addGameData("CyberPunk 2077", 79.99);
+            myDb.addGameData("Final Fantasy VII: Remake", 79.99);
+            myDb.addGameData("God of War", 39.99);
+            myDb.addGameData("Gran Turismo", 24.99);
+            myDb.addGameData("Street Fighter V", 24.99);
+            myDb.addGameData("UFC 3", 19.99);
 
 
         }

@@ -71,11 +71,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-    /*
-    public boolean addGameData (String name, double price){
+
+    public void addGameData (String name, double price){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
-    }*/
+        val.put(COLTB2_2, name);
+        val.put(COLTB2_3, price);
+
+
+    }
     /* don't know how to implement automatic
     public boolean addCartData (String userid, String gameid, String name, double price){
         SQLiteDatabase db = this.getWritableDatabase();
