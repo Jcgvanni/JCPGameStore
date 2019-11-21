@@ -23,6 +23,7 @@
     <string name="txtGameDesc">Game Description</string>
     <string name="gamePrice">Game Price</string>
     <string name="btnCart">Add to Cart</string>
+    <string name="btnTxtPlace">Place Order</string>
 
     <string-array name="numbers">
         <item>1</item>
