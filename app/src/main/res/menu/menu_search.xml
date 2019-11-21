@@ -9,4 +9,10 @@
         app:showAsAction="always" >
     </item>
 
+    <item
+        android:id="@+id/menuCart"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"
+        android:title="ShoppingCart"
+        app:showAsAction="always"></item>
+
 </menu>

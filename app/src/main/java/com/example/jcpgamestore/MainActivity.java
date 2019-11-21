@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private static ArrayList<DataGame> data;
     private CustomAdapter adapter;
+    private ImageView cart_icon;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +82,18 @@ public class MainActivity extends AppCompatActivity {
         //Inflate the menu;
         MenuInflater inflater = getMenuInflater();
         inflater.inflate( R.menu.menu_search, menu );
+
+        //Cart Icon to check out
+        MenuItem cart_icon = menu.findItem(R.id.menuCart);
+        cart_icon.setOnMenuItemClickListener( new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                startActivity( new Intent( MainActivity.this, CartActivity.class ) );
+                return true;
+            }
+        } );
+
+
 
         MenuItem item = menu.findItem( R.id.menuSearch );
         SearchView searchView = (SearchView)item.getActionView();
