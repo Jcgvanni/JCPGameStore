@@ -39,12 +39,13 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+            myDb = new DatabaseHelper(this);
             myRecycle = findViewById(R.id.recycleView);
             myRecycle.setHasFixedSize(true);
             myOnClickListener = new MyOnClickListener(this);
             layoutManager = new LinearLayoutManager(this);
             myRecycle.setLayoutManager(layoutManager);
-            
+
 
             data = new ArrayList<>();
             for(int i = 0; i < myGames.gameName.length; i++){
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             }
             adapter = new CustomAdapter(data);
             myRecycle.setAdapter(adapter);
-            myDb = new DatabaseHelper(this);
             myDb.addGameData("Avengers", 79.99);
             myDb.addGameData("Call of Duty: Modern Warfare", 79.99);
             myDb.addGameData("CyberPunk 2077", 79.99);
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             myDb.addGameData("Gran Turismo", 24.99);
             myDb.addGameData("Street Fighter V", 24.99);
             myDb.addGameData("UFC 3", 19.99);
+
 
 
         }

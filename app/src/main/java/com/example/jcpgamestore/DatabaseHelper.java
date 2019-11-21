@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private SQLiteDatabase db;
+    private Context context;
+
     public static final String DBNAME = "jcpstore.db";
 
     public static final String TABLE1NAME = "users_table";
@@ -29,23 +32,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLTB3_4 = "PRICE";
 
 
-
-
-
-
     public DatabaseHelper(@Nullable Context context) {
         super(context, DBNAME, null, 1);
+        this.context = context;
+        this.db = getWritableDatabase();
+
 
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE1NAME
-                + " (USERID INTEGER PRIMARY KEY AUTOINCREMENT, FULLNAME TEXT, EMAIL TEXT, ADDRESS TEXT, PASSWORD TEXT)");
+                + "(USERID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "FULLNAME TEXT," +
+                "EMAIL TEXT, " +
+                "ADDRESS TEXT, " +
+                "PASSWORD TEXT)");
         db.execSQL("CREATE TABLE " + TABLE2NAME
-                + " (GAMEID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, PRICE DECIMAL)");
+                + " (GAMEID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "NAME TEXT, " +
+                "PRICE DECIMAL)");
         db.execSQL("CREATE TABLE " + TABLE3NAME
-                + " (USERID INTEGER, GAMEID INTEGER, NAME TEXT, PRICE DECIMAL)");
+                + " (USERID INTEGER, " +
+                "GAMEID INTEGER, " +
+                "NAME TEXT, " +
+                "PRICE DECIMAL)");
 
     }
 
@@ -58,7 +69,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
     public boolean addUserData (String fullname, String email, String address, String password){
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues val = new ContentValues();
         val.put(COLTB1_2, fullname);
         val.put(COLTB1_3, email);
