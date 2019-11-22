@@ -30,7 +30,7 @@ public class SignupFormActivity extends AppCompatActivity {
         final TextView loginTextView = findViewById( R.id.loginTxtView );
         //
         final DatabaseHelper myDb;
-        myDb = new DatabaseHelper(this);
+        myDb = DatabaseHelper.getInstance(this);
 
 
             btnSignUpForm.setOnClickListener(new View.OnClickListener() {

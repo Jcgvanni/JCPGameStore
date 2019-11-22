@@ -1,10 +1,8 @@
 package com.example.jcpgamestore;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -18,15 +16,39 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.jcpgamestore.model.Cart;
+import com.example.jcpgamestore.model.DataGame;
+import com.example.jcpgamestore.model.User;
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> implements Filterable {
 
     private ArrayList<DataGame> dataSet;
     //copy of the dataset for the search function
     private ArrayList<DataGame> dataSetFull;
 
+    private User user;
+
+    public ArrayList<Cart> getCarts() {
+        return carts;
+    }
+
+    private ArrayList<Cart> carts = new ArrayList<>();
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public CustomAdapter(ArrayList<DataGame> data){
-        this.dataSet = data;
+        dataSet = data;
         dataSetFull = new ArrayList<>( data );
+    }
+
+    public void updateDataSet(List<DataGame> data) {
+        dataSet.clear();
+        dataSet.addAll( data );
+        dataSetFull = new ArrayList<>( data );
+
+        this.notifyDataSetChanged();
     }
 
     //Filter the data to search
@@ -66,11 +88,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     };
 
 
-
-
-
-
-
     @NonNull
     @Override
     public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -81,20 +98,39 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CustomAdapter.MyViewHolder holder, final int position) {
         TextView txtGameName = holder.txtGameName;
         TextView txtGamePrice = holder.txtGamePrice;
         ImageView imgGames = holder.imgGame;
         Button btnCart = holder.btnCart;
-        Spinner qtySpinner = holder.qtySpinner;
-
-
+        btnCart.setId( position );
+        final Spinner qtySpinner = holder.qtySpinner;
 
 
         txtGameName.setText(dataSet.get(position).getGameName());
-        txtGamePrice.setText(dataSet.get(position).getGamePrice());
+        txtGamePrice.setText(dataSet.get(position).getPrice().toString());
         imgGames.setImageResource(dataSet.get(position).getImage());
 
+        btnCart.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                DataGame product = dataSet.get( position);
+
+                // TODO: Check if the product exists in the carts and only update the quantity
+
+
+                Cart cart = new Cart();
+                cart.setUser( user );
+                cart.setUserId( user.getId() );
+                cart.setProduct( product );
+                cart.setProductId( product.getId() );
+                cart.setQuantity(Double.parseDouble(qtySpinner.getSelectedItem().toString()));
+                carts.add( cart );
+            }
+        } );
 
     }
 
