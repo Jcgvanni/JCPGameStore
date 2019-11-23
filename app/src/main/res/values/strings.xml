@@ -13,7 +13,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="txtTitleForm">Sign Up Form</string>
-    <string name="editFName">First Name</string>
+    <string name="editFName">Full Name</string>
     <string name="editLName">Last Name</string>
     <string name="btnTxtSignUp">Sign Up</string>
     <string name="EditTxtMember">Already a member? Sign In</string>
@@ -24,6 +24,8 @@
     <string name="gamePrice">Game Price</string>
     <string name="btnCart">Add to Cart</string>
     <string name="btnTxtPlace">Place Order</string>
+    <string name="txtAddress">Address</string>
+    <string name="txtOrderTotal">Your order Total is:</string>
 
     <string-array name="numbers">
         <item>1</item>

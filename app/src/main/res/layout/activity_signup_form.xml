@@ -44,12 +44,11 @@
         app:layout_constraintTop_toBottomOf="@+id/txtViewTitleForm" />
 
     <EditText
-        android:id="@+id/editTxtLName"
+        android:id="@+id/editTxtAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/editLName"
-        android:inputType="textPersonName"
+        android:hint="@string/txtAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,9 +63,9 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/editTxtLName"
+        app:layout_constraintStart_toEndOf="@+id/editTxtAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTxtLName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTxtAddress" />
 
     <EditText
         android:id="@+id/editTxtPassword"

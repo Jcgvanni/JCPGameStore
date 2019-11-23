@@ -19,29 +19,6 @@ public class DataGame implements Serializable {
         this.image = image;
     }
 
-    protected DataGame(Parcel in) {
-        id = in.readInt();
-        gameName = in.readString();
-        if (in.readByte() == 0) {
-            price = null;
-        } else {
-            price = in.readDouble();
-        }
-        image = in.readInt();
-    }
-//
-//    public static final Creator<DataGame> CREATOR = new Creator<DataGame>() {
-//        @Override
-//        public DataGame createFromParcel(Parcel in) {
-//            return new DataGame( in );
-//        }
-//
-//        @Override
-//        public DataGame[] newArray(int size) {
-//            return new DataGame[size];
-//        }
-//    };
-
     public int getId() {
         return id;
     }
@@ -58,7 +35,6 @@ public class DataGame implements Serializable {
         this.gameName = gameName;
     }
 
-
     public Double getPrice() {
         return price;
     }
@@ -67,7 +43,6 @@ public class DataGame implements Serializable {
         this.price = price;
     }
 
-
     public int getImage() {
         return image;
     }
@@ -75,17 +50,5 @@ public class DataGame implements Serializable {
     public void setImage(int image) {
         this.image = image;
     }
-//
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel parcel, int i) {
-//        parcel.writeInt( id );
-//        parcel.writeDouble( price );
-//        parcel.writeString( gameName );
-//        parcel.writeInt( image );
-//    }
+
 }

@@ -10,6 +10,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 import com.example.jcpgamestore.model.DataGame;
+import com.example.jcpgamestore.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,7 +94,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
+    public boolean addUserData (User user){
+
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
+
+            ContentValues val = new ContentValues();
+            val.put( FULLNAME, user.getFullName());
+            val.put( EMAIL, user.getEmail().toLowerCase());
+            val.put( ADDRESS, user.getAddress());
+            val.put( PASSWORD, user.getPassword());
+
+            db.insertOrThrow( USERS_TABLE, null, val);
+
+        } catch (Exception e) {
+            Log.e("Error adding DB", e.getMessage());
+            return false;
+        }
+
+        return true;
+    }
+
+    public User findByEmail(String email){
+
+        User user = null;
+        String query = "Select " +
+                USERID +", " +
+                FULLNAME + ", " +
+                ADDRESS + ", "+
+                EMAIL + ", "+
+                PASSWORD +
+                " FROM " + USERS_TABLE +
+                " where "+EMAIL+" = ?" ;
+
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+
+            Cursor cursor = db.rawQuery(query, new String[]{email.toLowerCase()});
+            if (cursor != null && cursor.moveToFirst()){
+                user = new User();
+                user.setId(cursor.getInt(cursor.getColumnIndex(USERID)));
+                user.setFullName( cursor.getString( cursor.getColumnIndex(FULLNAME)));
+                user.setPassword( cursor.getString( cursor.getColumnIndex( PASSWORD ) ) );
+                user.setAddress( cursor.getString( cursor.getColumnIndex( ADDRESS ) ) );
+                user.setEmail( cursor.getString( cursor.getColumnIndex( EMAIL ) ) );
+            }
+        } catch (Exception ex){
+            Log.e("DB DEMO", ex.getMessage());
+        }
+
+        return user;
+    }
+
     public boolean addUserData (String fullname, String email, String address, String password){
+
         ContentValues val = new ContentValues();
         val.put( FULLNAME, fullname);
         val.put( EMAIL, email);
@@ -106,6 +161,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
 
 
     /**

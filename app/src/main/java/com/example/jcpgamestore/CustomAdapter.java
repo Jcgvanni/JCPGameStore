@@ -51,6 +51,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.notifyDataSetChanged();
     }
 
+    public void cleanCart() {
+        carts.clear();
+    }
+
     //Filter the data to search
     @Override
     public Filter getFilter() {
@@ -92,7 +96,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View myView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout, parent, false);
-        myView.setOnClickListener(MainActivity.myOnClickListener);
+        //myView.setOnClickListener(MainActivity.myOnClickListener);
         MyViewHolder myViewHolder = new MyViewHolder(myView);
         return myViewHolder;
     }

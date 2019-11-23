@@ -1,5 +1,6 @@
 package com.example.jcpgamestore;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,37 +33,43 @@ public class MainActivity extends AppCompatActivity {
     private CustomAdapter adapter;
     private ImageView cart_icon;
 
-    //TODO: Populate the logged user
     private User loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDb = DatabaseHelper.getInstance(this);
+
         myRecycle = findViewById(R.id.recycleView);
         myRecycle.setHasFixedSize(true);
         myOnClickListener = new MyOnClickListener(this);
         layoutManager = new LinearLayoutManager(this);
         myRecycle.setLayoutManager(layoutManager);
 
-        //TODO: Remove
-        loggedUser = new User();
-        loggedUser.setId( 100000 );
-        loggedUser.setFullName( "Paulo" );
-        loggedUser.setEmail( "paulo@gmail.com" );
-
+        myDb = DatabaseHelper.getInstance(this);
         data = new ArrayList<>();
         adapter = new CustomAdapter(data);
         myRecycle.setAdapter(adapter);
+
+        loggedUser = (User) getIntent().getSerializableExtra("USER");
+
         adapter.setUser( loggedUser );
         loadGameData();
+    }
+
+    //Method to clear cart after user place order
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult( requestCode, resultCode, data );
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            adapter.cleanCart();
+        }
     }
 
     private void loadGameData() {
         List<DataGame> productsFromDB = myDb.loadGames();
         if (productsFromDB.isEmpty()) {
-            // TODO Move to the onCreate database helper method
+            //Created method verifying if DB was already loaded
             myDb.addProduct( "Avengers", 79.99, R.drawable.avengers );
             myDb.addProduct( "Call of Duty: Modern Warfare", 79.99, R.drawable.callofduty );
             myDb.addProduct( "CyberPunk 2077", 79.99, R.drawable.cyberpunk2077 );
@@ -104,12 +111,11 @@ public class MainActivity extends AppCompatActivity {
         cart_icon.setOnMenuItemClickListener( new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                startActivity(intent);
+                startActivityForResult(intent, 1);
+//                startActivity(intent);
                 return true;
             }
         } );
-
-
 
         MenuItem item = menu.findItem( R.id.menuSearch );
         SearchView searchView = (SearchView)item.getActionView();
@@ -129,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onCreateOptionsMenu( menu );
     }
-
-
 }
 
 

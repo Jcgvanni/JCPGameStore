@@ -8,18 +8,56 @@
     android:layout_height="match_parent"
     tools:context=".CartActivity">
 
-    <Button
-        android:id="@+id/btnPlaceOrder"
-        android:text="@string/btnTxtPlace"
-
-        android:layout_alignParentBottom="true"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCart"
-        android:layout_above="@+id/btnPlaceOrder"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerCart"
+            android:layout_width="match_parent"
+            android:layout_height="461dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/txtOrderTotal"
+            app:layout_constraintBottom_toTopOf="@+id/btnPlaceOrder"
+            app:layout_constraintEnd_toStartOf="@+id/txtTotalAmount"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTotalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/btnPlaceOrder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btnPlaceOrder"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="47dp"
+            android:text="@string/btnTxtPlace"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>
