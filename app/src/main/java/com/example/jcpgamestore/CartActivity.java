@@ -41,11 +41,12 @@ public class CartActivity extends AppCompatActivity {
         totalAmount = findViewById( R.id.txtTotalAmount );
         calculateTotal();
 
+        //When placing an order, it resets the cart. So you can place an order again with the same user.
         btnPlaceOrder.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cartArrayList.clear();
-                Toast.makeText(CartActivity.this, "Thank you for shopping with us", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CartActivity.this, "Thank you for shopping with us", Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent();
                 intent.putExtra("CART", "empty");
@@ -53,8 +54,6 @@ public class CartActivity extends AppCompatActivity {
                 finish();
             }
         } );
-
-
     }
 
 
@@ -64,10 +63,6 @@ public class CartActivity extends AppCompatActivity {
         for (Cart cart: cartArrayList) {
             total = total + cart.calculateTotal();
         }
-
-        // TODO: 2019-11-22  DecimalFormat df = new
-        // TODO: 2019-11-22  DecimalFormat df = new
-
         totalAmount.setText( total.toString() );
     }
 }

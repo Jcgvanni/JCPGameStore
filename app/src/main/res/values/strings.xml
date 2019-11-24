@@ -25,7 +25,10 @@
     <string name="btnCart">Add to Cart</string>
     <string name="btnTxtPlace">Place Order</string>
     <string name="txtAddress">Address</string>
-    <string name="txtOrderTotal">Your order Total is:</string>
+    <string name="txtOrderTotal">Your order total is:</string>
+    <string name="txtViewShoppingCart">Shopping Cart</string>
+    <string name="txtShipping" >Shipping:</string>
+    <string name="txtSubtotal">Subtotal:</string>
 
     <string-array name="numbers">
         <item>1</item>

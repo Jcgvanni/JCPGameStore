@@ -7,10 +7,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
-
 import com.example.jcpgamestore.model.Cart;
-
-
 import java.util.ArrayList;
 
 public class CartAdapter extends Adapter<CartAdapter.CartViewHolder> {
@@ -40,7 +37,6 @@ public class CartAdapter extends Adapter<CartAdapter.CartViewHolder> {
         txtGameName.setText(cart.getProduct().getGameName());
         qty.setText( cart.getQuantity().toString());
         amount.setText(cart.calculateTotal().toString());
-
     }
 
     @Override

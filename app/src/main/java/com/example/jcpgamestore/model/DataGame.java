@@ -1,8 +1,5 @@
 package com.example.jcpgamestore.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
 public class DataGame implements Serializable {
@@ -27,6 +24,7 @@ public class DataGame implements Serializable {
         this.id = id;
     }
 
+
     public String getGameName() {
         return gameName;
     }
@@ -35,6 +33,7 @@ public class DataGame implements Serializable {
         this.gameName = gameName;
     }
 
+
     public Double getPrice() {
         return price;
     }
@@ -42,6 +41,7 @@ public class DataGame implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
+
 
     public int getImage() {
         return image;

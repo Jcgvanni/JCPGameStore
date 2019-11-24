@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             adapter.cleanCart();
         }
     }
-
+    //Load data into DB
     private void loadGameData() {
         List<DataGame> productsFromDB = myDb.loadGames();
         if (productsFromDB.isEmpty()) {
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    //Search widget in Menu Bar
+    //Search Widget in Menu Bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu;
@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 startActivityForResult(intent, 1);
-//                startActivity(intent);
                 return true;
             }
         } );

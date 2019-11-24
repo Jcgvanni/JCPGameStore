@@ -119,20 +119,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             @Override
             public void onClick(View view) {
 
-
-
                 DataGame product = dataSet.get( position);
 
                 // TODO: Check if the product exists in the carts and only update the quantity
-
-
-                Cart cart = new Cart();
-                cart.setUser( user );
-                cart.setUserId( user.getId() );
-                cart.setProduct( product );
-                cart.setProductId( product.getId() );
-                cart.setQuantity(Double.parseDouble(qtySpinner.getSelectedItem().toString()));
-                carts.add( cart );
+                    Cart cart = new Cart();
+                    cart.setUser( user );
+                    cart.setUserId( user.getId() );
+                    cart.setProduct( product );
+                    cart.setProductId( product.getId() );
+                    cart.setQuantity(Double.parseDouble(qtySpinner.getSelectedItem().toString()));
+                    carts.add( cart );
             }
         } );
 

@@ -26,6 +26,7 @@ public class User implements Serializable {
         this.id = id;
     }
 
+
     public String getFullName() {
         return fullName;
     }
@@ -33,6 +34,7 @@ public class User implements Serializable {
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
+
 
     public String getEmail() {
         return email;
@@ -42,6 +44,7 @@ public class User implements Serializable {
         this.email = email;
     }
 
+
     public String getAddress() {
         return address;
     }
@@ -49,6 +52,7 @@ public class User implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
+
 
     public String getPassword() {
         return password;
