@@ -69,7 +69,7 @@ public class CartActivity extends AppCompatActivity {
         for (Cart cart: cartArrayList) {
             total = total + cart.calculateTotal();
         }
-        DecimalFormat df = new DecimalFormat("C$#.##");
+        DecimalFormat df = new DecimalFormat("C$ #.##");
         totalAmount.setText( df.format(total) );
     }
     private void calculateShipment(){
@@ -77,7 +77,7 @@ public class CartActivity extends AppCompatActivity {
         for (Cart cart: cartArrayList){
             total += (cart.calculateTotal() * 0.1);
         }
-        DecimalFormat df = new DecimalFormat("C$#.##");
+        DecimalFormat df = new DecimalFormat("C$ #.##");
         shipment.setText( df.format(total) );
     }
     private void calculateOrderTotal(){
@@ -87,7 +87,7 @@ public class CartActivity extends AppCompatActivity {
             total = (cart.calculateTotal());
             cost += (total * 0.1) + total;
         }
-        DecimalFormat df = new DecimalFormat("C$#.##");
+        DecimalFormat df = new DecimalFormat("C$ #.##");
         totalOrder.setText( df.format(cost) );
     }
 
