@@ -125,7 +125,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
                 // TODO: Check if the product exists in the carts and only update the quantity
 
-
                 Cart cart = new Cart();
                 cart.setUser( user );
                 cart.setUserId( user.getId() );
