@@ -24,6 +24,8 @@ public class CartActivity extends AppCompatActivity {
     private Button btnPlaceOrder;
     private ArrayList<Cart> cartArrayList = new ArrayList<>(  );
     private TextView totalAmount;
+    private TextView shipment;
+    private TextView totalOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,10 @@ public class CartActivity extends AppCompatActivity {
 
         totalAmount = findViewById( R.id.txtTotalAmount );
         calculateTotal();
+        shipment = findViewById(R.id.shipping);
+        calculateShipment();
+        totalOrder = findViewById(R.id.txtOrderTotal);
+        calculateOrderTotal();
 
         //When placing an order, it resets the cart. So you can place an order again with the same user.
         btnPlaceOrder.setOnClickListener( new View.OnClickListener() {
@@ -63,6 +69,27 @@ public class CartActivity extends AppCompatActivity {
         for (Cart cart: cartArrayList) {
             total = total + cart.calculateTotal();
         }
-        totalAmount.setText( total.toString() );
+        DecimalFormat df = new DecimalFormat("C$#.##");
+        totalAmount.setText( df.format(total) );
     }
+    private void calculateShipment(){
+        Double total = new Double(0);
+        for (Cart cart: cartArrayList){
+            total = (cart.calculateTotal() * 0.1);
+        }
+        DecimalFormat df = new DecimalFormat("C$#.##");
+        shipment.setText( df.format(total) );
+    }
+    private void calculateOrderTotal(){
+        Double total = new Double(0);
+        Double  cost;
+        for (Cart cart: cartArrayList){
+            total = (cart.calculateTotal());
+        }
+        cost = (total * 0.1) + total;
+
+        DecimalFormat df = new DecimalFormat("C$#.##");
+        totalOrder.setText( df.format(cost) );
+    }
+
 }

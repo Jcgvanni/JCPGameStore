@@ -222,9 +222,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    /* don't know how to implement automatic
-    public boolean addCartData (String userid, String gameid, String name, double price){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues val = new ContentValues();
-    }*/
+
 }
