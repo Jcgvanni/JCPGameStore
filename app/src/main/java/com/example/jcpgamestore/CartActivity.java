@@ -6,13 +6,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jcpgamestore.model.Cart;
+import com.example.jcpgamestore.model.User;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -26,12 +30,15 @@ public class CartActivity extends AppCompatActivity {
     private TextView totalAmount;
     private TextView shipment;
     private TextView totalOrder;
+    private String TotalOrder;
+    private String loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_cart );
         cartArrayList = (ArrayList<Cart>) getIntent().getSerializableExtra("CART");
+        loggedUser = getIntent().getStringExtra( "USER" );
         btnPlaceOrder = findViewById( R.id.btnPlaceOrder );
         cartRecycler = findViewById( R.id.recyclerCart );
         layoutManager = new LinearLayoutManager( this );
@@ -47,17 +54,25 @@ public class CartActivity extends AppCompatActivity {
         totalOrder = findViewById(R.id.txtOrderTotal);
         calculateOrderTotal();
 
+
         //When placing an order, it resets the cart. So you can place an order again with the same user.
         btnPlaceOrder.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cartArrayList.clear();
-                Toast.makeText(CartActivity.this, "Thank you for shopping with us", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent();
-                intent.putExtra("CART", "empty");
-                setResult(RESULT_OK, intent);
+                try{
+                Intent checkoutIntent = new Intent( CartActivity.this, CreditCardActivity.class );
+                TotalOrder = totalOrder.getText(  ).toString();
+                checkoutIntent.putExtra( "TOTAL_ORDER", TotalOrder );
+                checkoutIntent.putExtra( "USER", loggedUser );
+
+                startActivity( checkoutIntent );
                 finish();
+
+                } catch (Exception ex){
+                    Log.e( "JCP GameStore", ex.getMessage() );
+                }
+
             }
         } );
     }

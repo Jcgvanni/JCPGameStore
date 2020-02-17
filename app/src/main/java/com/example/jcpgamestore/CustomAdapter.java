@@ -119,10 +119,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
             @Override
             public void onClick(View view) {
 
-
-
                 DataGame product = dataSet.get( position);
 
+
+                //add only the quantity to the cart
                 for (Cart cart: carts){
                     if (cart.getProduct().getId()==product.getId()){
                         Double qty = 0.00;

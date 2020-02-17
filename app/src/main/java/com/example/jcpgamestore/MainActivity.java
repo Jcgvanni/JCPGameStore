@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView cart_icon;
 
     private User loggedUser;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         myRecycle.setAdapter(adapter);
 
         loggedUser = (User) getIntent().getSerializableExtra("USER");
+        userName = loggedUser.getFullName();
 
         adapter.setUser( loggedUser );
         loadGameData();
@@ -104,14 +106,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Cart Icon to check out
         MenuItem cart_icon = menu.findItem(R.id.menuCart);
-        final Intent intent = new Intent( MainActivity.this, CartActivity.class );
+        final Intent cartIntent = new Intent( MainActivity.this, CartActivity.class );
         ArrayList carts = adapter.getCarts();
-        intent.putStringArrayListExtra("CART", carts);
+        cartIntent.putStringArrayListExtra("CART", carts);
+        cartIntent.putExtra("USER", userName);
 
         cart_icon.setOnMenuItemClickListener( new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                startActivityForResult(intent, 1);
+                startActivityForResult(cartIntent, 1);
                 return true;
             }
         } );

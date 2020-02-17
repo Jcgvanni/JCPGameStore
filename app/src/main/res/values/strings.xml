@@ -27,7 +27,7 @@
     <string name="txtAddress">Address</string>
     <string name="txtOrderTotal">Your order total is:</string>
     <string name="txtViewShoppingCart">Shopping Cart</string>
-    <string name="txtShipping" >Shipping:</string>
+    <string name="txtShipping">Shipping:</string>
     <string name="txtSubtotal">Subtotal:</string>
 
     <string-array name="numbers">

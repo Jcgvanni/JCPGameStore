@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 PRICE +" DECIMAL)");
 
         db.execSQL("CREATE TABLE " + CARTS_TABLE
-                + " ("+CART_USERID+" INTEGER, " +
+                + " ("+CART_USERID + " INTEGER, " +
                 CART_GAMEID +" INTEGER, " +
                 QUANTITY + " INTEGER)");
 
